@@ -21,15 +21,43 @@ const winningCombinations = [
   ]
 
  // add an event listener called handleClick
- handleClick = function(event) {
-    var cell = event.target
-    console.log(cell.id);
-  }
+//  handleClick = function(event) {
+//     var cell = event.target
+//     console.log(cell.id);
+//   }
   
+//   var cells = document.querySelectorAll("td");
+  
+//   for(var i = 0; i < cells.length; i++) {
+//     cells[i].addEventListener('click', handleClick)
+//   }
+  
+  // update handleClick
+  // print the current player’s character (X or O) on the board, and swap players.
+  // store the new selection in the appropriate player's selections array.
+  handleClick = function(event) {
+    var cell = event.target;
+  
+    cell.innerHTML = currentPlayer;
+  
+    if(currentPlayer === "X" ) {
+      playerSelections = playerXSelections;
+      nextPlayer = "O";
+    } else {
+      playerSelections = playerOSelections;
+      nextPlayer = "X";
+    }
+  
+    playerSelections.push(parseInt(cell.id));
+    // console.log(playerXSelections);
+    console.log(playerOSelections)
+  
+    // Swap players
+    currentPlayer = nextPlayer;
+  }
+
   var cells = document.querySelectorAll("td");
   
   for(var i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', handleClick)
   }
-  
-  
