@@ -8,6 +8,8 @@ var nextPlayer = "O";
 var playerXSelections = new Array();
 var playerOSelections = new Array();
 
+var banner = "Winner!";
+
 // Winning combinations
 const winningCombinations = [
     [1, 2, 3],
@@ -20,21 +22,7 @@ const winningCombinations = [
     [3, 5, 7]
   ]
 
- // add an event listener called handleClick
-//  handleClick = function(event) {
-//     var cell = event.target
-//     console.log(cell.id);
-//   }
-  
-//   var cells = document.querySelectorAll("td");
-  
-//   for(var i = 0; i < cells.length; i++) {
-//     cells[i].addEventListener('click', handleClick)
-//   }
-  
-  // update handleClick
-  // print the current player’s character (X or O) on the board, and swap players.
-  // store the new selection in the appropriate player's selections array.
+
   handleClick = function(event) {
     var cell = event.target;
   
@@ -49,12 +37,25 @@ const winningCombinations = [
     }
   
     playerSelections.push(parseInt(cell.id));
-    // console.log(playerXSelections);
-    console.log(playerOSelections)
+    console.log(playerXSelections.sort());
+    console.log(playerOSelections.sort());
+ 
   
     // Swap players
     currentPlayer = nextPlayer;
+  
   }
+// Determine if there is a winner //
+
+    for (i=0; i<winningCombinations.length; i++){
+        if (playerXSelections === winningCombinations[i]);
+            banner = "Winner!!!"
+            console.log(banner);
+        } 
+            // banner = "Next player's turn."
+            // console.log(banner);
+        
+    
 
   var cells = document.querySelectorAll("td");
   
